@@ -50,7 +50,7 @@ export default function LoginScreen({navigation, authenticateCustomer, data}) {
 
             <View style={styles.registerContainer}>
                 <Text>{texts.login["new_user"]} </Text>
-                <TouchableOpacity onPress={_ => navigation.navigate("Register")}>
+                <TouchableOpacity onPress={_ => navigation.navigate("RegisterScreen")}>
                   <Text style={styles.registerText}>{texts.login["link:sign_up"]}</Text>
                 </TouchableOpacity>
             </View>

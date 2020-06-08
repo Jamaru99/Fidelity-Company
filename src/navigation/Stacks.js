@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { LoginScreen } from '@screens'
+import { LoginScreen, RegisterScreen } from '@screens'
 
 const Stack = createStackNavigator();
 
@@ -10,6 +10,11 @@ export const LoginStack = () => (
       name="LoginScreen"
       component={LoginScreen}
       options={{ title: "Login" }}
-    />   
+    />
+    <Stack.Screen
+      name="RegisterScreen"
+      component={RegisterScreen}
+      options={{ title: "Cadastrar" }}
+    />
   </Stack.Navigator>
 )

@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LinkingConfiguration from './LinkingConfiguration';
 import BottomTabNavigator from './BottomTabNavigator';
-import { LoginStack } from '@navigation';
+import { LoginStack } from './Stacks';
 
 const Stack = createStackNavigator();
 
