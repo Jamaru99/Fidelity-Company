@@ -13,14 +13,47 @@ import {
 // import { authenticate as authenticateCustomer } from '@state/action'
 //import { authenticate as authenticateCompany } from '@state/company/company.action'
 // import { window } from '@constants';
+import texts from '../../utils/text';
 
 const window = Dimensions.get('window')
 
 export default function LoginScreen({navigation, authenticateCustomer, data}) {
 
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const onLoginClick = () => {
+        // authenticateCustomer({username, password, navigation});
+        //authenticateCompany({username, password, navigation });
+    }
+
     return (
         <View style={styles.container}>
-            <Text>asdhausydasuydasud</Text>
+
+            <TextField
+                label={texts.login["placeholder:username"]}
+                onChangeText={(text) => setUsername(text)}
+            />
+            <TextField
+                label={texts.login["placeholder:password"]}
+                secureTextEntry={true}
+                onChangeText={(text) => setPassword(text)}
+            />
+
+            <Button 
+                title={texts.login["button:login"]} 
+                onPress={onLoginClick} 
+                disabled={!username || !password}
+            />
+
+            {/* <Text>{data.error}</Text> */}
+
+            <View style={styles.registerContainer}>
+                <Text>{texts.login["new_user"]} </Text>
+                <TouchableOpacity onPress={_ => navigation.navigate("Register")}>
+                  <Text style={styles.registerText}>{texts.login["link:sign_up"]}</Text>
+                </TouchableOpacity>
+            </View>
 
         </View>
     );

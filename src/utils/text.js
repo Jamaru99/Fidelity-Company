@@ -8,7 +8,7 @@ export const deviceLanguage = Platform.OS === 'ios'
 
 const english = {
     login: {
-        "placeholder:username": "Username",
+        "placeholder:username": "Email",
         "placeholder:password": "Password",
         "new_user": "New user?",
         "link:sign_up": "Sign up!",
@@ -20,7 +20,7 @@ const english = {
 
 const portuguese = {
     login: {
-        "placeholder:username": "Nome de usuário",
+        "placeholder:username": "Email",
         "placeholder:password": "Senha",
         "new_user": "Usuário novo?",
         "link:sign_up": "Cadastre-se!",
