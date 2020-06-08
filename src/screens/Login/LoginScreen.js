@@ -13,7 +13,7 @@ import {
 // import { authenticate as authenticateCustomer } from '@state/action'
 //import { authenticate as authenticateCompany } from '@state/company/company.action'
 // import { window } from '@constants';
-import texts from '../../utils/text';
+import { texts } from '@utils';
 
 const window = Dimensions.get('window')
 

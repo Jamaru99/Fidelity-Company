@@ -11,7 +11,7 @@
           "@state": "./state",
           "@services": "./services",
           "@constants": "./utils/constants",
-          "@texts": "./utils/texts"
+          "@utils": "./src/utils"
         }
       }
     ]
