@@ -13,7 +13,7 @@ import { authenticate } from '@state';
 
 import styles from './login.style';
 
-function LoginScreen({navigation, authenticateDispatched, data}) {
+function LoginScreen({ navigation, authenticateDispatched, companyData }) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -41,7 +41,7 @@ function LoginScreen({navigation, authenticateDispatched, data}) {
                 disabled={!username || !password}
             />
 
-            <Text style={styles.errorText}>{data.error}</Text>
+            <Text style={styles.errorText}>{companyData.error}</Text>
 
             <View style={styles.registerContainer}>
                 <Text>{texts.login["new_user"]} </Text>
@@ -56,8 +56,8 @@ function LoginScreen({navigation, authenticateDispatched, data}) {
 
 
 
-const mapStateToProps = ({ reducer }) => ({
-    data: reducer.data,
+const mapStateToProps = (state) => ({
+    companyData: state.companyData,
 });
   
 const mapDispatchToProps = {

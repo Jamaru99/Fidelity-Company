@@ -81,13 +81,9 @@ function RegisterScreen({ navigation, registerCompanyDispatched }) {
       </ScrollView>
     );
 }
-
-const mapStateToProps = ({ reducer }) => ({
-    data: reducer.data,
-});
   
 const mapDispatchToProps = {
   registerCompanyDispatched: registerCompany
 }
   
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);
+export default connect(null, mapDispatchToProps)(RegisterScreen);
