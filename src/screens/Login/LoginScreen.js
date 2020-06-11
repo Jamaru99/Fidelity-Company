@@ -24,7 +24,6 @@ function LoginScreen({navigation, authenticateDispatched, data}) {
     const [password, setPassword] = useState("");
 
     const onLoginClick = () => {
-        // authenticateCustomer({username, password, navigation});
         authenticateDispatched({username, password, navigation });
     }
 
