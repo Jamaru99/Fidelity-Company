@@ -1,11 +1,6 @@
-import React, {useState} from 'react';
-import { bindActionCreators } from "redux";
+import React, { useState } from 'react';
 import { connect } from "react-redux";
-import {
-    TextField,
-    FilledTextField,
-    OutlinedTextField,
-  } from 'react-native-material-textfield';
+import { TextField } from 'react-native-material-textfield';
 import {
   Button,
   StyleSheet,
@@ -15,19 +10,72 @@ import {
   View,
   Dimensions
 } from 'react-native';
-import TypeButtons from './components/TypeButtons';
-import CompanyForm from './components/CompanyForm';
+
 const window = Dimensions.get('window')
 
-export default function RegisterScreen({registerCustomer}) {
+export default function RegisterScreen({ registerCompany }) {
 
     const [registerType, setRegisterType] = useState("customer");
+    const [form, setForm] = useState({
+      username: "", 
+      password: "", 
+      confirmPassword: "",
+      name: "",
+      nCardPoints: "",
+      state: "",
+      city: "",
+      address: ""
+  })
+
+  const onChange = field => text => {
+    setForm({ ...form, [field]: text });
+  };
+
+  const onRegisterClick = () => {
+      //setClicked(true);
+      //authenticate({cpf, password, navigation});
+  }
 
     return (
-        <View style={styles.container}>
-              <CompanyForm />
-
-        </View>
+        <ScrollView style={styles.container}>
+          <TextField
+              label='Nome *'
+              onChangeText={onChange("name")}
+          />
+          <TextField
+            label='Número de pontos do cartão *'
+            onChangeText={onChange("nCardPoints")}
+          />
+          <TextField
+            label='Senha *'
+            secureTextEntry={true}
+            onChangeText={onChange("password")}
+          />
+          <TextField
+            label='Confirmar senha *'
+            secureTextEntry={true}
+            onChangeText={onChange("confirmPassword")}
+          />
+          <TextField
+            label='Estado *'
+            onChangeText={onChange("state")}
+          />
+          <TextField
+            label='Cidade *'
+            onChangeText={onChange("city")}
+          />
+            
+          <TextField
+            label='Email'
+            onChangeText={onChange("email")}
+          />
+          <View style={styles.button}>
+            <Button
+              title="Cadastrar" 
+              onPress={onRegisterClick} 
+            />
+          </View>
+      </ScrollView>
     );
 }
 
@@ -36,8 +84,12 @@ const styles = StyleSheet.create({
     height: window.height,
     width: window.width/1.2,
     alignSelf: 'center',
-    marginTop: 60
+    marginTop: 20
   },
+  button: {
+    marginTop: 20,
+    marginBottom: 90
+  }
 });
 
 // const mapStateToProps = ({ reducer }) => ({

@@ -14,7 +14,7 @@ import {
 //import { authenticate as authenticateCompany } from '@state/company/company.action'
 // import { window } from '@constants';
 import { texts } from '@utils';
-import { authenticate } from '../../state/action';
+import { authenticate } from '@state';
 
 const window = Dimensions.get('window')
 

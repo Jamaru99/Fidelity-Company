@@ -10,7 +10,7 @@ import {
 import { 
   authenticate as authenticateCompanyService,
   register as registerCompanyService
-} from "../services";
+} from "@services";
 
 import { texts } from '@utils';
 

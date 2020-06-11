@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import { bindActionCreators } from "redux";
+import React, { useState } from 'react';
 import { connect } from "react-redux";
 import { TextField } from 'react-native-material-textfield';
 import {
@@ -8,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image,
   Dimensions
 } from 'react-native';
 // import { authenticate as authenticateCustomer } from '@state/action'
@@ -16,31 +16,31 @@ import {
 
 const window = Dimensions.get('window')
 
-export default function LoginScreen({navigation, authenticateCustomer, data}) {
+export default function LoginScreen({ navigation, data}) {
 
     return (
         <View style={styles.container}>
-            <Text>asdhausydasuydasud</Text>
-
+            <Text>Mostre o QR Code ao cliente para que um ponto no cartão dele seja contabilizado</Text>
+            <Image 
+              style={styles.image}
+              source={{ uri: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Example' }}
+            />
         </View>
     );
 }
 
 const styles = StyleSheet.create({
   container: {
-    height: window.height,
+    height: window.height/1.5,
     width: window.width/1.2,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    alignItems: 'center',
     alignSelf: 'center',
-    paddingBottom: 80
+    paddingBottom: 80,
   },
-  registerContainer: {
-    flexDirection: 'row',
-    alignSelf: 'center'
-  },
-  registerText: {
-    color: 'blue',
-    textDecorationLine: 'underline'
+  image: {
+    width: 150,
+    height: 150
   }
 });
 
