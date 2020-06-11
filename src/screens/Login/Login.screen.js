@@ -2,15 +2,16 @@ import React, {useState} from 'react';
 import { connect } from "react-redux";
 import {
   Button,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View
 } from 'react-native';
 import { TextField } from 'react-native-material-textfield';
 
-import { texts, layout, colors } from '@utils';
+import { texts } from '@utils';
 import { authenticate } from '@state';
+
+import styles from './login.style';
 
 function LoginScreen({navigation, authenticateDispatched, data}) {
 
@@ -53,27 +54,7 @@ function LoginScreen({navigation, authenticateDispatched, data}) {
     );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    height: layout.screenHeight,
-    width: layout.defaultContainerWidth,
-    alignSelf: 'center',
-    marginTop: '25%'
-  },
-  registerContainer: {
-    marginTop: 10,
-    flexDirection: 'row',
-    alignSelf: 'center'
-  },
-  registerText: {
-    color: colors.tintColor,
-    textDecorationLine: 'underline'
-  },
-  errorText: {
-    marginTop: 10,
-    color: colors.errorText
-  }
-});
+
 
 const mapStateToProps = ({ reducer }) => ({
     data: reducer.data,

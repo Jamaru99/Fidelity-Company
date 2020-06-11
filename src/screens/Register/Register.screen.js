@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import {
   Button,
-  StyleSheet,
   ScrollView,
   View
 } from 'react-native';
 import { connect } from "react-redux";
 import { TextField } from 'react-native-material-textfield';
 
-import { registerCompany } from '@state'
-import { layout } from '@utils';
+import { registerCompany } from '@state';
+import { texts } from '@utils';
+
+import styles from './register.style';
 
 function RegisterScreen({ navigation, registerCompanyDispatched }) {
 
@@ -30,7 +31,6 @@ function RegisterScreen({ navigation, registerCompanyDispatched }) {
 
   const onRegisterClick = () => {
       registerCompanyDispatched({ form, navigation });
-      //authenticate({cpf, password, navigation});
   }
 
     return (
@@ -81,19 +81,6 @@ function RegisterScreen({ navigation, registerCompanyDispatched }) {
       </ScrollView>
     );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    height: layout.screenHeight/1.5,
-    width: layout.defaultContainerWidth,
-    alignSelf: 'center',
-    marginTop: 20
-  },
-  button: {
-    marginTop: 20,
-    marginBottom: 10
-  }
-});
 
 const mapStateToProps = ({ reducer }) => ({
     data: reducer.data,
