@@ -16,7 +16,7 @@ import {
 
 const window = Dimensions.get('window')
 
-export default function LoginScreen({ navigation, data}) {
+export default function LoginScreen({ navigation, data }) {
 
     return (
         <View style={styles.container}>

@@ -17,16 +17,16 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'Get Started',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
+          title: 'QR Code',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="qrcode" />,
         }}
       />
       <BottomTab.Screen
-        name="Links"
+        name="Info"
         component={LinksScreen}
         options={{
-          title: 'Resources',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          title: 'Info',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="information" />,
         }}
       />
     </BottomTab.Navigator>
@@ -39,7 +39,7 @@ function getHeaderTitle(route) {
   switch (routeName) {
     case 'Home':
       return 'Cartão Fidelidade - QR Code'
-    case 'Links':
+    case 'Info':
       return 'Meus dados'
   }
 }

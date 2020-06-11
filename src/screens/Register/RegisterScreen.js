@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
-import { connect } from "react-redux";
-import { TextField } from 'react-native-material-textfield';
 import {
   Button,
   StyleSheet,
   Text,
   TouchableOpacity,
   ScrollView,
-  View,
-  Dimensions
+  View
 } from 'react-native';
+import { connect } from "react-redux";
+import { TextField } from 'react-native-material-textfield';
 
-const window = Dimensions.get('window')
+import { layout } from '@utils';
 
 export default function RegisterScreen({ registerCompany }) {
 
-    const [registerType, setRegisterType] = useState("customer");
     const [form, setForm] = useState({
       username: "", 
       password: "", 
@@ -39,36 +37,42 @@ export default function RegisterScreen({ registerCompany }) {
     return (
         <ScrollView style={styles.container}>
           <TextField
-              label='Nome *'
+            label='Email *'
+            onChangeText={onChange("email")}
+          />
+
+          <TextField
+              label='Nome da empresa *'
               onChangeText={onChange("name")}
           />
+
           <TextField
             label='Número de pontos do cartão *'
             onChangeText={onChange("nCardPoints")}
           />
+
           <TextField
             label='Senha *'
             secureTextEntry={true}
             onChangeText={onChange("password")}
           />
+
           <TextField
             label='Confirmar senha *'
             secureTextEntry={true}
             onChangeText={onChange("confirmPassword")}
           />
+
           <TextField
             label='Estado *'
             onChangeText={onChange("state")}
           />
+          
           <TextField
             label='Cidade *'
             onChangeText={onChange("city")}
           />
-            
-          <TextField
-            label='Email'
-            onChangeText={onChange("email")}
-          />
+          
           <View style={styles.button}>
             <Button
               title="Cadastrar" 
@@ -81,8 +85,8 @@ export default function RegisterScreen({ registerCompany }) {
 
 const styles = StyleSheet.create({
   container: {
-    height: window.height,
-    width: window.width/1.2,
+    height: layout.screenHeight/1.5,
+    width: layout.defaultContainerWidth,
     alignSelf: 'center',
     marginTop: 20
   },

@@ -13,10 +13,8 @@ import {
 // import { authenticate } from '@state'
 //import { authenticate as authenticateCompany } from '@state/company/company.action'
 // import { window } from '@constants';
-import { texts } from '@utils';
+import { texts, layout } from '@utils';
 import { authenticate } from '@state';
-
-const window = Dimensions.get('window')
 
 function LoginScreen({navigation, authenticateDispatched, data}) {
 
@@ -61,11 +59,10 @@ function LoginScreen({navigation, authenticateDispatched, data}) {
 
 const styles = StyleSheet.create({
   container: {
-    height: window.height,
-    width: window.width/1.2,
-    justifyContent: 'center',
+    height: layout.screenHeight,
+    width: layout.defaultContainerWidth,
     alignSelf: 'center',
-    paddingBottom: 80
+    marginTop: '25%'
   },
   registerContainer: {
     flexDirection: 'row',

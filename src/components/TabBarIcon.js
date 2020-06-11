@@ -1,11 +1,11 @@
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as React from 'react';
 
 import { colors } from '@utils';
 
 export default function TabBarIcon(props) {
   return (
-    <Ionicons
+    <MaterialCommunityIcons
       name={props.name}
       size={30}
       style={{ marginBottom: -3 }}
