@@ -10,21 +10,22 @@ import {
   View,
   Dimensions
 } from 'react-native';
-// import { authenticate as authenticateCustomer } from '@state/action'
+// import { authenticate } from '@state'
 //import { authenticate as authenticateCompany } from '@state/company/company.action'
 // import { window } from '@constants';
 import { texts } from '@utils';
+import { authenticate } from '../../state/action';
 
 const window = Dimensions.get('window')
 
-export default function LoginScreen({navigation, authenticateCustomer, data}) {
+function LoginScreen({navigation, authenticateDispatched, data}) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const onLoginClick = () => {
         // authenticateCustomer({username, password, navigation});
-        //authenticateCompany({username, password, navigation });
+        authenticateDispatched({username, password, navigation });
     }
 
     return (
@@ -46,7 +47,7 @@ export default function LoginScreen({navigation, authenticateCustomer, data}) {
                 disabled={!username || !password}
             />
 
-            {/* <Text>{data.error}</Text> */}
+            <Text>{data.error}</Text>
 
             <View style={styles.registerContainer}>
                 <Text>{texts.login["new_user"]} </Text>
@@ -77,11 +78,12 @@ const styles = StyleSheet.create({
   }
 });
 
-// const mapStateToProps = ({ reducer }) => ({
-//     data: reducer.data,
-// });
+const mapStateToProps = ({ reducer }) => ({
+    data: reducer.data,
+});
   
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators({ authenticateCustomer }, dispatch);
+const mapDispatchToProps = {
+  authenticateDispatched: authenticate
+};
   
-// export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

@@ -7,6 +7,7 @@ export const deviceLanguage = Platform.OS === 'ios'
     : NativeModules.I18nManager.localeIdentifier;
 
 const english = {
+    generic_error: "Connection error",
     login: {
         "placeholder:username": "Email",
         "placeholder:password": "Password",
@@ -19,6 +20,7 @@ const english = {
 };
 
 const portuguese = {
+    generic_error: "Erro de conexão",
     login: {
         "placeholder:username": "Email",
         "placeholder:password": "Senha",

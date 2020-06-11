@@ -2,7 +2,7 @@ import { createReducer } from "./lib";
 import {
   SET_LOADING,
   AUTHENTICATE_SUCCESS,
-  AUTHENTICATE_FAILED,
+  AUTHENTICATE_FAILED
 } from "./action";
 
 const initialState = {
