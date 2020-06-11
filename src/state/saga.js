@@ -19,9 +19,7 @@ function* authenticate(action){
     const { data } = yield call(authenticateCompanyService, action.payload);
     yield put(authenticateSuccess(data));
     action.payload.navigation.navigate("BottomTabNavigator");
-  }
-  catch(err) {
-    console.log(err.message)
+  } catch(err) {
     if(err.message.includes("401"))
       yield put(authenticateFailed(texts.login["error:incorrect_password"]));
     else if(err.message.includes("404"))
@@ -32,12 +30,13 @@ function* authenticate(action){
 }
 
 function* registerCompany(action){
-  
-  try{
-    const { data } = yield call(registerCompanyService, action.payload);
+  console.log(action.payload)
+  try {
+    const { data } = yield call(registerCompanyService, action.payload.form);
     yield put(authenticateSuccess(data));
+    action.payload.navigation.navigate("BottomTabNavigator");
   } catch(err) {
-    console.log(err.message);
+    yield put(authenticateFailed(texts.generic_error));
   }
 }
 

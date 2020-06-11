@@ -4,10 +4,6 @@ export const [SET_LOADING, setLoading] = createAction(
   `SET_LOADING`
 );
 
-export const [REGISTER_CUSTOMER, registerCustomer] = createAction(
-  `REGISTER_CUSTOMER`
-);
-
 export const [REGISTER_COMPANY, registerCompany] = createAction(
   `REGISTER_COMPANY`
 );

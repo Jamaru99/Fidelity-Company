@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import {
   Button,
   StyleSheet,
-  Text,
-  TouchableOpacity,
   ScrollView,
   View
 } from 'react-native';
 import { connect } from "react-redux";
 import { TextField } from 'react-native-material-textfield';
 
+import { registerCompany } from '@state'
 import { layout } from '@utils';
 
-export default function RegisterScreen({ registerCompany }) {
+function RegisterScreen({ navigation, registerCompanyDispatched }) {
 
     const [form, setForm] = useState({
       username: "", 
@@ -30,7 +29,7 @@ export default function RegisterScreen({ registerCompany }) {
   };
 
   const onRegisterClick = () => {
-      //setClicked(true);
+      registerCompanyDispatched({ form, navigation });
       //authenticate({cpf, password, navigation});
   }
 
@@ -38,7 +37,7 @@ export default function RegisterScreen({ registerCompany }) {
         <ScrollView style={styles.container}>
           <TextField
             label='Email *'
-            onChangeText={onChange("email")}
+            onChangeText={onChange("username")}
           />
 
           <TextField
@@ -67,7 +66,7 @@ export default function RegisterScreen({ registerCompany }) {
             label='Estado *'
             onChangeText={onChange("state")}
           />
-          
+
           <TextField
             label='Cidade *'
             onChangeText={onChange("city")}
@@ -92,20 +91,16 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 20,
-    marginBottom: 90
+    marginBottom: 10
   }
 });
 
-// const mapStateToProps = ({ reducer }) => ({
-//     data: reducer.data,
-// });
+const mapStateToProps = ({ reducer }) => ({
+    data: reducer.data,
+});
   
-// const mapDispatchToProps = dispatch =>
-//   bindActionCreators(
-//     {
-//       registerCustomer,
-//     },
-//     dispatch
-//   );
+const mapDispatchToProps = {
+  registerCompanyDispatched: registerCompany
+}
   
-// export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);

@@ -1,19 +1,15 @@
 import React, {useState} from 'react';
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { TextField } from 'react-native-material-textfield';
 import {
   Button,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
-  Dimensions
+  View
 } from 'react-native';
-// import { authenticate } from '@state'
-//import { authenticate as authenticateCompany } from '@state/company/company.action'
-// import { window } from '@constants';
-import { texts, layout } from '@utils';
+import { TextField } from 'react-native-material-textfield';
+
+import { texts, layout, colors } from '@utils';
 import { authenticate } from '@state';
 
 function LoginScreen({navigation, authenticateDispatched, data}) {
@@ -21,8 +17,8 @@ function LoginScreen({navigation, authenticateDispatched, data}) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const onLoginClick = () => {
-        authenticateDispatched({username, password, navigation });
+    const handleLoginPress = () => {
+        authenticateDispatched({ username, password, navigation });
     }
 
     return (
@@ -40,11 +36,11 @@ function LoginScreen({navigation, authenticateDispatched, data}) {
 
             <Button 
                 title={texts.login["button:login"]} 
-                onPress={onLoginClick} 
+                onPress={handleLoginPress} 
                 disabled={!username || !password}
             />
 
-            <Text>{data.error}</Text>
+            <Text style={styles.errorText}>{data.error}</Text>
 
             <View style={styles.registerContainer}>
                 <Text>{texts.login["new_user"]} </Text>
@@ -65,12 +61,17 @@ const styles = StyleSheet.create({
     marginTop: '25%'
   },
   registerContainer: {
+    marginTop: 10,
     flexDirection: 'row',
     alignSelf: 'center'
   },
   registerText: {
-    color: 'blue',
+    color: colors.tintColor,
     textDecorationLine: 'underline'
+  },
+  errorText: {
+    marginTop: 10,
+    color: colors.errorText
   }
 });
 
