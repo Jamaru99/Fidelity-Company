@@ -14,72 +14,72 @@ import styles from './register.style';
 
 function RegisterScreen({ navigation, registerCompanyDispatched }) {
 
-    const [form, setForm] = useState({
-      username: "", 
-      password: "", 
-      confirmPassword: "",
-      name: "",
-      nCardPoints: "",
-      state: "",
-      city: "",
-      address: ""
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+    name: "",
+    nCardPoints: "",
+    state: "",
+    city: "",
+    address: ""
   })
 
   const onChange = field => text => {
     setForm({ ...form, [field]: text });
-  };
+  }
 
-  const onRegisterClick = () => {
+  const handleRegisterPress = () => {
       registerCompanyDispatched({ form, navigation });
   }
 
-    return (
-        <ScrollView style={styles.container}>
-          <TextField
-            label='Email *'
-            onChangeText={onChange("username")}
-          />
+  return (
+    <ScrollView style={styles.container}>
+      <TextField
+        label='Email *'
+        onChangeText={onChange("username")}
+      />
 
-          <TextField
-              label='Nome da empresa *'
-              onChangeText={onChange("name")}
-          />
+      <TextField
+        label='Nome da empresa *'
+        onChangeText={onChange("name")}
+      />
 
-          <TextField
-            label='Número de pontos do cartão *'
-            onChangeText={onChange("nCardPoints")}
-          />
+      <TextField
+        label='Número de pontos do cartão *'
+        onChangeText={onChange("nCardPoints")}
+      />
 
-          <TextField
-            label='Senha *'
-            secureTextEntry={true}
-            onChangeText={onChange("password")}
-          />
+      <TextField
+        label='Senha *'
+        secureTextEntry={true}
+        onChangeText={onChange("password")}
+      />
 
-          <TextField
-            label='Confirmar senha *'
-            secureTextEntry={true}
-            onChangeText={onChange("confirmPassword")}
-          />
+      <TextField
+        label='Confirmar senha *'
+        secureTextEntry={true}
+        onChangeText={onChange("confirmPassword")}
+      />
 
-          <TextField
-            label='Estado *'
-            onChangeText={onChange("state")}
-          />
+      <TextField
+        label='Estado *'
+        onChangeText={onChange("state")}
+      />
 
-          <TextField
-            label='Cidade *'
-            onChangeText={onChange("city")}
-          />
+      <TextField
+        label='Cidade *'
+        onChangeText={onChange("city")}
+      />
           
-          <View style={styles.button}>
-            <Button
-              title="Cadastrar" 
-              onPress={onRegisterClick} 
-            />
-          </View>
-      </ScrollView>
-    );
+      <View style={styles.button}>
+        <Button
+          title="Cadastrar" 
+          onPress={handleRegisterPress} 
+        />
+      </View>
+    </ScrollView>
+  );
 }
   
 const mapDispatchToProps = {

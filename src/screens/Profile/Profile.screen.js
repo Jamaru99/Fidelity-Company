@@ -1,30 +1,71 @@
+import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import * as WebBrowser from 'expo-web-browser';
-import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { RectButton, ScrollView } from 'react-native-gesture-handler';
+import { TextField } from 'react-native-material-textfield';
+import { layout } from '@utils';
 
-export default function LinksScreen() {
+export default function ProfileScreen() {
+
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+    name: "",
+    nCardPoints: "",
+    state: "",
+    city: "",
+    address: "" 
+  })
+
+  const onChange = field => text => {
+    setForm({ ...form, [field]: text });
+  }
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-      <OptionButton
-        icon="md-school"
-        label="Read the Expo documentation"
-        onPress={() => WebBrowser.openBrowserAsync('https://docs.expo.io')}
+      <TextField
+        label='Email *'
+        onChangeText={onChange("username")}
       />
 
-      <OptionButton
-        icon="md-compass"
-        label="Read the React Navigation documentation"
-        onPress={() => WebBrowser.openBrowserAsync('https://reactnavigation.org')}
+      <TextField
+        label='Nome da empresa *'
+        onChangeText={onChange("name")}
       />
 
-      <OptionButton
-        icon="ios-chatboxes"
-        label="Ask a question on the forums"
-        onPress={() => WebBrowser.openBrowserAsync('https://forums.expo.io')}
-        isLastOption
+      <TextField
+        label='Número de pontos do cartão *'
+        onChangeText={onChange("nCardPoints")}
       />
+
+      <TextField
+        label='Senha *'
+        secureTextEntry={true}
+        onChangeText={onChange("password")}
+      />
+
+      <TextField
+        label='Confirmar senha *'
+        secureTextEntry={true}
+        onChangeText={onChange("confirmPassword")}
+      />
+
+      <TextField
+        label='Estado *'
+        onChangeText={onChange("state")}
+      />
+
+      <TextField
+        label='Cidade *'
+        onChangeText={onChange("city")}
+      />
+          
+      <View style={styles.button}>
+        <Button
+          title="Salvar" 
+        />
+      </View>
     </ScrollView>
   );
 }
@@ -47,7 +88,8 @@ function OptionButton({ icon, label, onPress, isLastOption }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fafafa',
+    width: layout.defaultContainerWidth,
+    alignSelf: 'center'
   },
   contentContainer: {
     paddingTop: 15,
